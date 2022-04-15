@@ -15,8 +15,20 @@ vector<string> split(const string &);
 
 string balancedSums(vector<int> arr)
 {
-    std::string result{"YES"};
-    return result;
+    int sum = std::accumulate(arr.begin(), arr.end(), 0);
+    int left_sum = 0;
+
+    for (int i = 0; i < arr.size(); ++i)
+    {
+        if (left_sum == (sum - left_sum - arr.at(i)))
+        {
+            return "YES";
+        }
+
+        left_sum += arr.at(i);
+    }
+
+    return "NO";
 }
 
 int main()
@@ -95,4 +107,3 @@ vector<string> split(const string &str) {
 
     return tokens;
 }
-
