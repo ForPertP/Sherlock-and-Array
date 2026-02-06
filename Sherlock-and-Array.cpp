@@ -15,6 +15,25 @@ vector<string> split(const string &);
 
 string balancedSums(vector<int> arr)
 {
+    int totalSum = std::accumulate(arr.begin(), arr.end(), 0);
+    int leftSum = 0;
+
+    for (int i = 0; i < arr.size(); i++)
+    {
+        int rightSum = totalSum - leftSum - arr[i];
+        if (leftSum == rightSum)
+        {
+            return "YES";
+        }
+        leftSum += arr[i];
+    }
+
+    return "NO";
+}
+
+
+string balancedSums(vector<int> arr)
+{
     int sum = std::accumulate(arr.begin(), arr.end(), 0);
     int left_sum = 0;
 
