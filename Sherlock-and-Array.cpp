@@ -18,14 +18,13 @@ string balancedSums(vector<int> arr)
     int totalSum = std::accumulate(arr.begin(), arr.end(), 0);
     int leftSum = 0;
 
-    for (int i = 0; i < arr.size(); i++)
+    for (int x : arr)
     {
-        int rightSum = totalSum - leftSum - arr[i];
+        int rightSum = totalSum - leftSum - x;
         if (leftSum == rightSum)
-        {
             return "YES";
-        }
-        leftSum += arr[i];
+
+        leftSum += x;
     }
 
     return "NO";
